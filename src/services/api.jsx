@@ -1,0 +1,1 @@
+export const baseurl = "https://git-hush-backend.vercel.app"
