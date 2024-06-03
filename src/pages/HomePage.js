@@ -45,7 +45,7 @@ const HomePage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <SearchBar onSearch={handleSearch} />
+      {/* <SearchBar onSearch={handleSearch} /> */}
       {loading ? <p>Loading...</p> : <BookList books={books} />}
       <Pagination
         currentPage={page}
