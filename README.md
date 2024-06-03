@@ -1,7 +1,9 @@
 # Backend Link
 
-This project was bootstrapped with [Backend Github link](https://github.com/rohitchourey0809/git-hush-backend).
+ [Backend Github link](https://github.com/rohitchourey0809/git-hush-backend).
 
+
+https://github.com/rohitchourey0809/git-hush-backend
 
 npm start
 http://localhost:3000
