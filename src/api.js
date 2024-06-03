@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let baseURL = "http://localhost:8080/api";
+export const baseURL = "http://localhost:8080";
 
 export const fetchBooks = (query) => {
   return axios.get(`/books/search?query=${query}`);
@@ -13,14 +13,7 @@ export const fetchallBookslist = async () => {
 export const fetchBookById = (id) => {
   return axios.get(`${baseURL}/books/${id}`);
 };
-// const token = localStorage.getItem("token");
 
-// // Include the token in the request headers
-// const config = {
-//   headers: {
-//     Authorization: `Bearer ${token}`,
-//   },
-// };
 export const submitReview = (review) => {
   return axios.post(`${baseURL}/reviews`, review, {
     headers: {
