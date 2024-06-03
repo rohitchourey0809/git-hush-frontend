@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    toast.success("First signup first, moving to signup page");
+    toast.warn("Authentication needed,Signup first");
     setTimeout(() => {
       navigate("/signup");
     }, 6000);
