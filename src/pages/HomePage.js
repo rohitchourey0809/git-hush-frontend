@@ -3,7 +3,6 @@ import SearchBar from "../components/SearchBar";
 import BookList from "../components/BookList";
 import axios from "axios";
 import { baseurl } from "../services/api";
-import { baseURL } from "../api";
 
 const HomePage = () => {
   const [books, setBooks] = useState([]);
@@ -15,11 +14,11 @@ const HomePage = () => {
   const fetchBooks = async (searchQuery = "", pageNum = 1) => {
     try {
       setLoading(true);
-      const response = await axios.get(`${baseURL}/api/books`, {
+      const response = await axios.get(`${baseurl}/api/books`, {
         params: { q: searchQuery, page: pageNum, limit: 5 },
       });
       const fetchedBooks = response.data;
-      const totalBooks = response.data.total;
+      const totalBooks = response.data.length;
 
       setBooks(fetchedBooks);
       setTotalPages(Math.ceil(totalBooks / 5));
@@ -45,10 +44,9 @@ const HomePage = () => {
   }, [page, query]);
 
   return (
-    <div>
+    <div className="container mx-auto p-4">
       <SearchBar onSearch={handleSearch} />
-      <BookList books={books} />
-      {loading && <p>Loading...</p>}
+      {loading ? <p>Loading...</p> : <BookList books={books} />}
       <Pagination
         currentPage={page}
         totalPages={totalPages}
@@ -66,10 +64,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   }
 
   return (
-    <div className="pagination">
+    <div className="flex justify-center items-center mt-4 space-x-2">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
+        className="px-4 py-2 bg-gray-200 rounded disabled:bg-gray-400"
       >
         Previous
       </button>
@@ -77,7 +76,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={currentPage === page ? "active" : ""}
+          className={`px-4 py-2 rounded ${
+            currentPage === page ? "bg-blue-500 text-white" : "bg-gray-200"
+          }`}
         >
           {page}
         </button>
@@ -85,6 +86,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
+        className="px-4 py-2 bg-gray-200 rounded disabled:bg-gray-400"
       >
         Next
       </button>
