@@ -19,12 +19,12 @@ export const Signup = () => {
         username,
         password,
       });
-      alert("successful");
+    
       toast.success("Account created successfully Move to Login Page!");
       setUsername("");
       setPassword("");
       setTimeout(() => {
-        navigate("/");
+        navigate("/login");
       }, 5000);
     } catch (error) {
       toast.error("Failed to create account");
